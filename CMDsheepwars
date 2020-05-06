@@ -1,0 +1,57 @@
+package fr.sheepwars.cmd;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import fr.sheepwars.MainSheepwars;
+
+public class CMDsheepwars implements CommandExecutor {
+
+private MainSheepwars main;	
+
+public  CMDsheepwars(MainSheepwars sheepwars) {
+	this.main = sheepwars;
+	
+}
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String sheepwars, String[] args) {
+
+		if(sender instanceof Player) {
+			Player player = (Player) sender;
+
+			if(cmd.getName().equalsIgnoreCase("sheepwars"));
+			if(args.length == 0) {
+                
+				player.sendMessage(main.getConfig().getString("message.info.a").replace("&", "§"));
+				player.sendMessage(main.getConfig().getString("message.info.b").replace("&", "§"));
+				player.sendMessage(main.getConfig().getString("message.info.c").replace("&", "§"));
+				player.sendMessage(main.getConfig().getString("message.info.d").replace("&", "§"));
+				player.sendMessage(main.getConfig().getString("message.info.e").replace("&", "§"));
+				return true;
+
+			}
+
+			else if(args.length >= 1) {
+
+				if(args[0].equalsIgnoreCase("help")) {
+					if(args.length == 1) {
+                        
+						player.sendMessage(main.getConfig().getString("message.help.a").replace("&", "§"));
+						player.sendMessage(main.getConfig().getString("message.help.b").replace("&", "§"));
+						player.sendMessage(main.getConfig().getString("message.help.c").replace("&", "§"));
+
+					}
+
+				}
+
+			}
+
+		}
+
+		return false;
+	}
+
+}
